@@ -1,0 +1,22 @@
+package main
+
+import (
+	"desafios/d6"
+	"fmt"
+)
+
+func main (){
+	GatoHugo := d6.Gato{"Morgana"}
+	GatoHugo.Falar()
+
+	CachorroHugo := d6.Cachorro{"Fred"}
+	CachorroHugo.Falar()
+
+	var animais [] d6.Animal
+
+	animais = append(animais, &CachorroHugo, &GatoHugo)
+
+	for _, animal := range animais{
+		fmt.Println(animal.Falar())
+	}
+}

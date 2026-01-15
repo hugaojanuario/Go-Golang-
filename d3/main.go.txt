@@ -1,0 +1,12 @@
+package main
+
+import (
+	"desafios/d3"
+	"fmt"
+)
+
+func main (){
+	Hugo := d3.Pessoa{"Hugo", d3.Endereco{"Carlos Buck", "Jaboticabal"}}
+
+	fmt.Println(Hugo.Cidade)
+}

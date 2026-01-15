@@ -1,0 +1,14 @@
+package main
+
+import (
+	"desafios/d1"
+	"fmt"
+)
+
+func main (){
+	Hugo := d1.Pessoa{"Hugo", 21}
+
+	idadeHugo := Hugo.MaiorDeIdade()
+	fmt.Println(idadeHugo)
+
+}

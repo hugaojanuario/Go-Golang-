@@ -1,0 +1,17 @@
+package main
+
+import (
+	"desafios/d5"
+)
+
+func main (){
+	GatoHugo := d5.Gato{"Morgana"}
+	GatoHugo.Falar()
+
+	CachorroHugo := d5.Cachorro{"Fred"}
+	CachorroHugo.Falar()
+
+	d5.EmitirSom(&GatoHugo)
+	d5.EmitirSom(&CachorroHugo)
+
+}

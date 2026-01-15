@@ -1,0 +1,17 @@
+package main
+
+import (
+	"desafios/d4"
+	"fmt"
+)
+
+func main (){
+	GatoHugo := d4.Gato{"Morgana"}
+	somGato := GatoHugo.Falar()
+
+	CachorroHugo := d4.Cachorro{"Fred"}
+	somCachorro:= CachorroHugo.Falar()
+
+	fmt.Println(somGato)
+	fmt.Println(somCachorro)
+}

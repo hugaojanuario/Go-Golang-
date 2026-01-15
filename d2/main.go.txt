@@ -1,0 +1,14 @@
+package main
+
+import (
+	"desafios/d2"
+	
+)
+
+func main (){
+	Hugo := d2.ContaBancaria{}
+
+	Hugo.Depositar(100)
+	Hugo.ExibirSaldo()
+
+}
