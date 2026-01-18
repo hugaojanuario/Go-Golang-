@@ -98,42 +98,166 @@ type Motor struct {
 
 E uma struct Carro que embuta Motor e implemente Veiculo.
 
-8️⃣ Método que recebe interface
+8️⃣ Interface aplicada (mais concreta)
+
+Crie a interface:
+
+type Pagamento interface {
+    Pagar(valor float64) bool
+}
+
+
+Crie duas structs:
+
+CartaoCredito
+
+Pix
+
+📌 Cada uma implementa Pagar de forma diferente (mensagens diferentes já servem).
+
+Crie a função:
+
+func ProcessarPagamento(p Pagamento, valor float64)
+
+
+👉 Ela deve chamar p.Pagar(valor).
+
+9️⃣ Type assertion com caso real
 
 Crie uma função:
 
-func TestarVeiculo(v Veiculo)
+func ProcessarValor(v interface{})
 
 
-📌 Ela deve imprimir a velocidade máxima
-Passe tipos diferentes que implementem Veiculo.
+📌 Comportamento:
 
-9️⃣ Type assertion (assertiva de tipo)
+se for int → imprimir Inteiro
 
-Dada uma interface:
+se for float64 → imprimir Float
 
-var x interface{}
+se não for nenhum → imprimir Tipo não suportado
 
+👉 Use type assertion segura, não type switch ainda.
 
-📌 Atribua um int e depois faça:
-
-type assertion segura (valor, ok := ...)
-
-trate o caso de erro
-
-🔟 Interface vazia + switch de tipos
+🔟 Type switch aplicado
 
 Crie uma função:
 
-func IdentificarTipo(v interface{})
+func Log(v interface{})
 
 
-📌 Use type switch para:
+📌 Use switch v.(type) para:
+
+string → imprimir o tamanho
+
+int → imprimir o dobro
+
+bool → imprimir se é verdadeiro ou falso
+
+default → imprimir Tipo desconhecido
+
+➕ NOVOS DESAFIOS (11 → 15) – dificuldade crescente
+1️⃣1️⃣ Interface + estado interno (nível médio)
+
+Crie uma interface:
+
+type Dispositivo interface {
+    Ligar()
+    Desligar()
+}
+
+
+Implemente:
+
+TV
+
+Computador
+
+📌 Cada um deve manter um estado interno (ligado bool).
+
+1️⃣2️⃣ Método com ponteiro + interface
+
+Crie:
+
+type Contador interface {
+    Incrementar()
+    Valor() int
+}
+
+
+Implemente uma struct que só funcione corretamente com ponteiro.
+
+📌 Teste chamando via interface.
+
+1️⃣3️⃣ Interface como retorno de função
+
+Crie duas structs:
+
+EmailNotificador
+
+SMSNotificador
+
+Implemente:
+
+type Notificador interface {
+    Enviar(msg string)
+}
+
+
+Crie a função:
+
+func NovoNotificador(tipo string) Notificador
+
+
+📌 Retorne implementações diferentes.
+
+1️⃣4️⃣ Slice de interface + type assertion
+
+Crie:
+
+var itens []interface{}
+
+
+Adicione:
 
 int
 
 string
 
-bool
+struct qualquer
 
-default
+📌 Percorra e:
+
+se for int → multiplique
+
+se for string → imprima em maiúsculo
+
+se for struct → imprima o tipo
+
+👉 Aqui você mistura assertion + lógica.
+
+1️⃣5️⃣ Composição + override de comportamento (nível alto)
+
+Crie:
+
+type Logger interface {
+    Log(msg string)
+}
+
+Crie:
+
+LoggerBase
+
+LoggerArquivo
+
+LoggerConsole
+
+📌 Um deles deve reutilizar o comportamento base e alterar parte da lógica.
+
+👉 Isso força você a entender:
+
+composição
+
+método com mesmo nome
+
+chamada explícita do método embutido
